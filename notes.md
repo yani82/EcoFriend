@@ -35,6 +35,8 @@ ie
 *join table joining users and interests
 
 UserBrand
+- belongs_to :user 
+- belongs_to :brand 
 - userid 
 - brandid 
 - owner: boolean (didn’t want to have a belongs_to association with brand)
