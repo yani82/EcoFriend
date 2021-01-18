@@ -1,0 +1,2 @@
+class UserbrandsController < ApplicationController
+end
