@@ -1,25 +1,26 @@
 Eco Friend 
 
-Brand *join table joining categories & users 
-- has_many :users, through: :interests
-<!-- - belongs_to :user   -->
-- has_many :interests
-- name 
-- type 
-- url 
-
-ie 
-1. BioBag (https://www.biobagusa.com/)
-2. Seventh Generation (https://www.seventhgeneration.com/home)
-3. Patagonia (https://www.patagonia.com/home/)
-4. Grow NYC (https://www.grownyc.org/compost) 
-
 User 
 - has_many :brands, through: :interests 
 - has_many :interests 
 - username 
 - email 
 - password_digest 
+
+Brand *join table joining categories & users 
+- has_many :users, through: :interests
+<!-- - belongs_to :user   -->
+- has_many :interests 
+- name 
+- type 
+- url 
+<!-- or should I add - <shipping> as an attr instead? -->
+
+ie 
+1. BioBag (https://www.biobagusa.com/)
+2. Seventh Generation (https://www.seventhgeneration.com/home)
+3. Patagonia (https://www.patagonia.com/home/)
+4. Grow NYC (https://www.grownyc.org/compost) 
 
 <!-- Interest  
 - belongs_to :user 
