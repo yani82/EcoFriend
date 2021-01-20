@@ -1,5 +1,5 @@
 class Brand < ApplicationRecord
-    has_many :users, through: :interests
-    has_many :interests
-
+    has_many :comments
+    has_many :users, through: :comments
+    
 end

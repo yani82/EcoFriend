@@ -1,6 +1,6 @@
 class User < ApplicationRecord
-    has_many :brands, through: :interests 
-    has_many :interests, source: :brand
+    has_many :comments 
+    has_many :brands, through: :comments
     has_secure_password
 
 end

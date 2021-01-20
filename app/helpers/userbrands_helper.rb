@@ -1,2 +1,2 @@
-module UserbrandsHelper
+module CommentsHelper
 end
