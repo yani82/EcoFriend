@@ -7,7 +7,7 @@ User
 - email 
 - password_digest 
 
-Brand *join table joining categories & users 
+Brand  
 - has_many :comments 
 - has_many :users, through: :comments
 - name 
@@ -42,9 +42,9 @@ ie
 - owner: boolean (didn’t want to have a belongs_to association with brand) -->
 
 Questions
-- What UserInterests is associated with a Brand? 
-- How many brands is a user interested in?
-- Who's the most active user? 
-- What's the most popular brand? 
+- What Comments are associated with a Brand? 
+- How many Brands is a User interested in?
+- Who's the most active User? 
+- What's the most popular Brand? 
 
 
