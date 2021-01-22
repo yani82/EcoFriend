@@ -12,8 +12,15 @@ class SessionsController < ApplicationController
     end 
 
     def create 
-        User.find_by(username: params[:username]) #find_by doesn't throw an error   
-        byebug
+        @user = User.find_by(username: params[:user][:username]) #find_by doesn't throw an error   
+        # OR if @user && @user.authenticate(params[:user][:password]) 
+        if @user.try(:authenticate, params[:user][:password])
+            session[:user_id] = @user.id 
+            redirect_to user_path(@user)
+        else 
+            flash[:error] = "Sorry, login info was incorrect. Please try again."
+            redirect_to login_path
+        end 
     end 
 
 end
