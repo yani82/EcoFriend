@@ -9,7 +9,11 @@ class SessionsController < ApplicationController
     end 
 
     def new
-        
+    end 
+
+    def create 
+        User.find_by(username: params[:username]) #find_by doesn't throw an error   
+        byebug
     end 
 
 end
