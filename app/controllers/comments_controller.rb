@@ -7,16 +7,15 @@ class CommentsController < ApplicationController
     end
 
     def create
-        # @comment = Comment.new(comment_params)
-        @comment = current_user.comments.build(comment_params)
-        # @comment.brand_id_id = session[:brand_id_id]
-        # @comment.user_id_id = session[:user_id_id]
+        @comment = Comment.new(comment_params)
+        @comment.brand_id_id = session[:brand_id_id]
+        @comment.user_id_id = session[:user_id_id]
         if @comment.save
-            redirect_to comment_path(@comment)
-        else
-            render :new
-        end
-    end
+            redirect_to comments_path(@comment)
+        else 
+            render :new 
+        end 
+    end 
 
     # def create
     #     @recipe = current_user.recipes.build(recipe_params)
