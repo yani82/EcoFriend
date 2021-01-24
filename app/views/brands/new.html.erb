@@ -15,7 +15,7 @@
      <%= f.fields_for :comment do |c| %>
             <div>
             <%= c.label :review %>
-            <%= c.text_field :review %>
+            <%= c.text_area :review, size: "25x10" %>
             </div>
             <% end %>
             <br><br>

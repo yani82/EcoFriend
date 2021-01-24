@@ -1,10 +1,12 @@
+<h1>Add a Review for <%= @comment.brand.name %>:</h1>
+
 <%= form_for(@comment) do |f| %>
     <div>
             <%= f.label :review %>
-            <%= f.text_field :review %>
+            <%= f.text_area :review, size: "25x10" %>
     </div>
-    <br>
     <%= f.hidden_field :brand_id %>
+    <br><br> 
 
     <%= f.submit %>
 
