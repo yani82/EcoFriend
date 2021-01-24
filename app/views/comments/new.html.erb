@@ -1,4 +1,8 @@
-<h1>Add a Review for <%= @comment.brand.name %>:</h1>
+<% if params[:brand_id] %>
+    <h1>Add a Review for <%= @comment.brand.name %>:</h1>
+    <% else %>
+    <h1>Create a Review</h1>
+<% end %>
 
 <%= form_for(@comment) do |f| %>
     <div>
@@ -8,6 +12,6 @@
     <%= f.hidden_field :brand_id %>
     <br><br> 
 
-    <%= f.submit %>
+    <input type="submit" value="Submit">
 
 <% end %>

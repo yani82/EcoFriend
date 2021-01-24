@@ -1,0 +1,7 @@
+<h1>All Reviews</h1>
+
+<ol>
+<% @comments.each do |c| %>
+    <li><%= c.brand.name %>: <%= c.review %></li>
+<% end %>
+</ol>

@@ -3,7 +3,7 @@
 <% @brands.each do |b| %>
 
     <h2><%= b.name %> - <%= b.category %></h2>
-    <%= link_to "Write a review", new_brand_comment_path %>
+    <%= link_to "Write a review", new_brand_comment_path(b.id) %>
     <div>
         <p><% b.info %></p>
     </div>

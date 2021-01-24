@@ -1,8 +1,11 @@
 class CommentsController < ApplicationController
 
     def new
-        @brand = Brand.find_by_id(params[:brand_id]) 
-        @comment = @brand.comments.build 
+        if @brand = Brand.find_by_id(params[:brand_id]) 
+            @comment = @brand.comments.build 
+        else
+            @comment = Comment.new 
+        end 
     end 
 
     def create
@@ -10,7 +13,7 @@ class CommentsController < ApplicationController
         if @comment.save # returns the same true or false as .valid 
             redirect_to comment_path(@comment)
         else 
-            render :show 
+            render :show # new review not showing? 
         end 
     end 
 
@@ -19,7 +22,11 @@ class CommentsController < ApplicationController
     end 
 
     def index 
-        # @comments = Comment.all
+        if @brand = Brand.find_by_id(params[:brand_id]) 
+            @comments = @brand.comments 
+        else 
+            @comments = Comment.all
+        end
     end 
 
     private 
