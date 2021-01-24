@@ -1,10 +1,13 @@
 class CommentsController < ApplicationController
 
-    def new 
-        @comment = Comment.new 
-        #byebug
-        # @comment.build_brand
-    end
+    def new
+        @brand = Brand.find_by_id(params[:id]) 
+        @brand = Brand.new 
+    end 
+    
+    def index 
+        @comments = Comment.all
+    end 
 
     def create
         @comment = Comment.new(comment_params)
@@ -16,27 +19,6 @@ class CommentsController < ApplicationController
             render :new 
         end 
     end 
-
-    # def create
-    #     @recipe = current_user.recipes.build(recipe_params)
-    #     # binding.pry
-    #     if @recipe.save
-    #         # binding.pry
-    #         flash[:notice]= "Recipe successfully saved"
-    #         redirect_to '/my_recipes'
-    #     else
-    #         flash.now[:alert] = @recipe.errors.full_messages[0]          
-    #         render 'new'       
-    #     end  
-    # end
-
-    def index
-    end 
-
-    private 
-
-    def comment_params
-        params.require(:comment).permit(:review, brand_attributes: [:name, :category, :info])
-    end 
-
+    
 end
+
