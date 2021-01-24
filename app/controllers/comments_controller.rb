@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
 
     def new
         @brand = Brand.find_by_id(params[:id]) 
-        @brand = Brand.new 
+        @comment = @brand.build_comment  
     end 
     
     def index 

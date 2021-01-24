@@ -1,0 +1,11 @@
+<%= form_for(@comment) do |f| %>
+    <div>
+            <%= f.label :review %>
+            <%= f.text_field :review %>
+    </div>
+    <br>
+    <%= f.hidden_field :brand_id %>
+
+    <%= f.submit %>
+
+<% end %>
