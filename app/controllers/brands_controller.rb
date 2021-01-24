@@ -3,13 +3,14 @@ class BrandsController < ApplicationController
     def new 
         @brand = Brand.new 
         #byebug
-        @brand.build_brand
+        # @brand.build_brand or @brand.comments.build or @users.comments.build
     end
 
     def index
     end 
 
     def create
+        # binding.pry 
         @brand = Brand.new(brand_params)
         @brand.brand_id_id = session[:brand_id_id]
         @brand.user_id_id = session[:user_id_id]

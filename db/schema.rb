@@ -22,12 +22,12 @@ ActiveRecord::Schema.define(version: 2021_01_18_072531) do
 
   create_table "comments", force: :cascade do |t|
     t.string "review"
-    t.integer "user_id_id"
-    t.integer "brand_id_id"
+    t.integer "user_id"
+    t.integer "brand_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["brand_id_id"], name: "index_comments_on_brand_id_id"
-    t.index ["user_id_id"], name: "index_comments_on_user_id_id"
+    t.index ["brand_id"], name: "index_comments_on_brand_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -38,6 +38,6 @@ ActiveRecord::Schema.define(version: 2021_01_18_072531) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "comments", "brand_ids"
-  add_foreign_key "comments", "user_ids"
+  add_foreign_key "comments", "brands"
+  add_foreign_key "comments", "users"
 end
