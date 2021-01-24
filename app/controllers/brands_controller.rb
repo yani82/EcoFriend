@@ -12,27 +12,14 @@ class BrandsController < ApplicationController
     def create
         # binding.pry 
         @brand = Brand.new(brand_params)
-        @brand.brand_id_id = session[:brand_id_id]
-        @brand.user_id_id = session[:user_id_id]
+        # @brand.brand = session[:brand]
+        # @brand.user = session[:user]
         if @brand.save
             redirect_to brands_path(@brand)
         else 
             render :new 
         end 
     end 
-
-    # def create
-    #     @recipe = current_user.recipes.build(recipe_params)
-    #     # binding.pry
-    #     if @recipe.save
-    #         # binding.pry
-    #         flash[:notice]= "Recipe successfully saved"
-    #         redirect_to '/my_recipes'
-    #     else
-    #         flash.now[:alert] = @recipe.errors.full_messages[0]          
-    #         render 'new'       
-    #     end  
-    # end
 
     private 
 
