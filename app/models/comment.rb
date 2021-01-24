@@ -4,4 +4,8 @@ class Comment < ApplicationRecord
 
     # validates :content, presence: true
     
+    def brand_attributes=(attributes)
+        brand = Brand.find_or_create_by(attributes) if !name.empty?
+    end 
+    
 end

@@ -7,6 +7,7 @@ class BrandsController < ApplicationController
     end
 
     def index
+        @brands = Brand.all 
     end 
 
     def create
