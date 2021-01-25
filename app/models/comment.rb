@@ -3,6 +3,7 @@ class Comment < ApplicationRecord
     belongs_to :brand 
 
     validates :review, presence: true
+    validates :name, uniqueness: { scope: :brand } #not a customized validation
 
     # validates :stars, numericality: {only_integer: true, greater_than_or_equal_to: 0, less_than: 6}
     

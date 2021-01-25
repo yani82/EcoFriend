@@ -1,19 +1,6 @@
 <h1>Recommend a brand!</h1>
 
-<% if @brand.errors.any? %>
-  <div id="error_explanation">
-    <h2>
-      <%= pluralize(@brand.errors.count, "error") %>
-      prohibited this brand from being saved:
-    </h2>
- 
-    <ul>
-    <% @brand.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-<% end %>
+<%= render partial: "layouts/errors", locals: { object: @brand } %>
 
 <%= form_for(@brand) do |f| %>
     
