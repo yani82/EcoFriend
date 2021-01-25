@@ -7,11 +7,18 @@
 <%= render partial: "layouts/errors", locals: { object: @comment } %>
 
 <%= form_for(@comment) do |f| %>
+  <% if params[:brand_id] %> 
+    <%= f.hidden_field :brand_id %>
+  <% else %>
+    <div>
+            <%= f.label :brand_id, "Select a Brand" %>
+            <%= f.collection_select :brand_id, Brand.alpha, :id, :name_category_info, include_blank: true %>
+    </div>
+    <% end %>
     <div>
             <%= f.label :review %>
             <%= f.text_area :review, size: "25x10" %>
     </div>
-    <%= f.hidden_field :brand_id %>
     <br><br> 
 
     <input type="submit" value="Submit">
