@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   post '/signup' => 'users#create'
   delete '/logout' => 'sessions#destroy'
 
+  get '/auth/google_oauth2/callback' => 'sessions#omniauth'
+
 
   resources :brands do 
     resources :comments, only: [:new, :index]

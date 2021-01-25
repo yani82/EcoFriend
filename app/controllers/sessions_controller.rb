@@ -23,4 +23,22 @@ class SessionsController < ApplicationController
         end 
     end 
 
+    def omniauth
+        # byebug
+
+        @user = User.find_or_create_by(username: auth[:info][:email]) do |u|
+            u.password = SecureRandom.hex
+        end 
+
+        session[:user_id] = @user.id 
+        redirect_to user_path(@user)
+        # User.where(email: auth[:info][:email]).first_or_initialize
+    end 
+
+    private
+
+    def auth
+        request.env['omniauth.auth']
+    end 
+
 end
