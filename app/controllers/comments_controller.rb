@@ -8,15 +8,26 @@ class CommentsController < ApplicationController
         end 
     end 
 
+    # def create
+    #     @comment = current_user.comments.build(comment_params) 
+    #     # binding.pry
+    #     if @comment.save # returns the same true or false as .valid 
+    #         redirect_to comment_path(@comment)
+    #     else 
+    #         render :new # new review not showing? 
+    #     end 
+    # end 
+
     def create
-        @comment = current_user.comments.build(comment_params) 
-        # binding.pry
-        if @comment.save # returns the same true or false as .valid 
-            redirect_to comment_path(@comment)
-        else 
-            render :new # new review not showing? 
-        end 
-    end 
+        @brand = Brand.find_by(id: params[:id]) 
+        @comment = @brand.comments.build(comment_params) 
+         # binding.pry
+         if @comment.save # returns the same true or false as .valid 
+             redirect_to comment_path(@comment)
+         else 
+             render :new # new review not showing? 
+         end 
+     end 
 
     def show
         @comment = Comment.find_by_id(params[:id])
