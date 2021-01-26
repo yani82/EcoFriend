@@ -1,6 +1,7 @@
 class User < ApplicationRecord
     has_many :comments 
     has_many :brands, through: :comments
+    accepts_nested_attributes_for :comments 
 
     validates :username, uniqueness: true, presence: true 
 

@@ -10,6 +10,7 @@ class CommentsController < ApplicationController
 
     def create
         @comment = current_user.comments.build(comment_params) 
+        # binding.pry
         if @comment.save # returns the same true or false as .valid 
             redirect_to comment_path(@comment)
         else 
@@ -32,7 +33,7 @@ class CommentsController < ApplicationController
     private 
 
     def comment_params 
-        params.require(:comment).permit(:brand_id)
+        params.require(:comment).permit(:brand_id, :review)
     end 
     
 end
