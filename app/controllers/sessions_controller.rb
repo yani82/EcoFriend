@@ -26,9 +26,7 @@ class SessionsController < ApplicationController
     def omniauth
         # byebug
 
-        @user = User.find_or_create_by(username: auth[:info][:email]) do |u|
-            u.password = SecureRandom.hex
-        end 
+        @user = User.create_by_google_omniauth(auth)
 
         session[:user_id] = @user.id 
         redirect_to user_path(@user)

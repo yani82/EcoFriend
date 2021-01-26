@@ -10,17 +10,17 @@ class BrandsController < ApplicationController
         @brands = Brand.all 
     end 
 
-    def create
-        # binding.pry 
-        @brand = Brand.new(brand_params)
-        # @brand.brand = session[:brand]
-        # @brand.user = session[:user]
-        if @brand.save
-            redirect_to brands_path(@brand)
-        else 
-            render :new 
-        end 
-    end 
+    # def create
+    #     # binding.pry 
+    #     @brand = Brand.new(brand_params)
+    #     # @brand.brand = session[:brand]
+    #     # @brand.user = session[:user]
+    #     if @brand.save
+    #         redirect_to brands_path(@brand)
+    #     else 
+    #         render :new 
+    #     end 
+    # end 
 
     private 
 

@@ -13,7 +13,7 @@ class CommentsController < ApplicationController
         if @comment.save # returns the same true or false as .valid 
             redirect_to comment_path(@comment)
         else 
-            render :show # new review not showing? 
+            render :new # new review not showing? 
         end 
     end 
 

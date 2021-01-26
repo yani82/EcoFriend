@@ -16,10 +16,4 @@ class Brand < ApplicationRecord
         brand = Brand.find_or_create_by(attributes) if !name.empty?
     end 
 
-    def not_a_duplicate # custom validation
-        if Brand.find_by(name: name)
-          errors.add(:name, 'can not be a duplicate')
-        end
-    end 
-
 end
