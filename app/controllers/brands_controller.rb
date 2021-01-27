@@ -14,7 +14,7 @@ class BrandsController < ApplicationController
     def create 
         @brand = current_user.brands.build(brand_params)
         # @brand.brand = session[:brand]
-        binding.pry
+        # binding.pry
         # @brand.user = session[:user]
         if @brand.save
             redirect_to brands_path(@brand)
