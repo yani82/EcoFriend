@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
 
   resources :brands do 
-    resources :comments, only: [:new, :index]
+    resources :comments #, only: [:new, :index]
   end  
   resources :comments 
   resources :users

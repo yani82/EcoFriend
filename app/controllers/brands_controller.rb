@@ -1,7 +1,8 @@
 class BrandsController < ApplicationController
 
     def new 
-        @brand = Brand.new 
+        @brand = Brand.new
+        @user = current_user 
         #byebug
         # @brand.build_brand 
         # or @brand.comments.build or @users.comments.build
@@ -14,9 +15,9 @@ class BrandsController < ApplicationController
     def create 
         @brand = current_user.brands.build(brand_params)
         # @brand.brand = session[:brand]
-        # binding.pry
         # @brand.user = session[:user]
         if @brand.save
+            # binding.pry
             redirect_to brands_path(@brand)
         else 
             render :new 
@@ -26,7 +27,7 @@ class BrandsController < ApplicationController
     private 
 
     def brand_params
-        params.require(:brand).permit(:name, :category, :info, :image, comments_attributes: [:id, :review])
+        params.require(:brand).permit(:name, :category, :info, :image, comments_attributes:[:review])
     end 
 
 end

@@ -1,26 +1,6 @@
-<% if params[:brand_id] %>
-    <h1>Add a Review for <%= @comment.brand.name %>:</h1>
-    <% else %>
-    <h1>Create a Review</h1>
-<% end %>
-
-<%= render partial: "layouts/errors", locals: { object: @comment } %>
-
-<%= form_for(@comment) do |f| %>
-  <% if params[:brand_id] %> 
-    <%= f.hidden_field :brand_id %>
-  <% else %>
-    <div>
-            <%= f.label :brand_id, "Select a Brand" %>
-            <%= f.collection_select :brand_id, Brand.alpha, :id, :name_category_info, include_blank: true %>
+<%= form_for ([@brand, @comment]) do |f| %>
+    <div class="field <%= 'field_with_errors' if @comment.errors[:content].any? %>">
+        <%= f.text_field :review, class: "commentBox", style: "width: 65%", placeholder:"add a comment" %>
+        <%= f.submit "Submit Review"%>
     </div>
-    <% end %>
-    <div>
-            <%= f.label :review %>
-            <%= f.text_area :review, size: "25x10" %>
-    </div>
-    <br><br> 
-
-    <input type="submit" value="Submit">
-
 <% end %>

@@ -1,27 +1,21 @@
 class CommentsController < ApplicationController
+    # before_action :find_comment, only: [:new, :index]
+    before_action :find_user
 
     def new
-        if @brand = Brand.find_by_id(params[:brand_id]) 
-            @comment = @brand.comments.build 
-        else
+        # if @brand = Brand.find_by_id(params[:brand_id]) 
+        #     @comment = @brand.comments.build 
+        # else
             @comment = Comment.new 
-        end 
-    end 
-
-    # def create
-    #     @comment = current_user.comments.build(comment_params) 
-    #     # binding.pry
-    #     if @comment.save # returns the same true or false as .valid 
-    #         redirect_to comment_path(@comment)
-    #     else 
-    #         render :new # new review not showing? 
-    #     end 
-    # end 
+            # @comment.user = current_user 
+        # end 
+    end  
 
     def create
-        @brand = Brand.find_by(id: params[:id]) 
+        @brand = Brand.find_by(id: params[:brand_id]) 
         @comment = @brand.comments.build(comment_params) 
-         # binding.pry
+        @comment.user = current_user 
+        # binding.pry
          if @comment.save # returns the same true or false as .valid 
              redirect_to comment_path(@comment)
          else 
@@ -44,8 +38,13 @@ class CommentsController < ApplicationController
     private 
 
     def comment_params 
-        params.require(:comment).permit(:brand_id, :review)
+        params.require(:comment).permit(:user_id, :brand_id, :review)
     end 
+
+    def find_user
+        @user = current_user
+        binding.pry 
+    end
     
-end
+end 
 

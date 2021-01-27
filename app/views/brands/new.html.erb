@@ -17,18 +17,10 @@
         <%= f.file_field :image %>
         <br><br> 
 
-    <%= f.fields_for :comments do |c| %>
-    <div id = "comments">
+        <%= f.fields_for :comments, Comment.new do |c| %>
         <%= c.label :review %>
-        <%= c.text_area :review, size: "25x10" %>
-        </div>
-         <% end %>
-
-
-          <%= f.fields_for :comment do |c| %>
-    <%= c.label :review %>
-    <%= c.text_field :review %><br>
-  <% end %>
+        <%= c.text_area :review %><br>
+        <% end %>
        
     <%= f.submit %>
 
