@@ -8,7 +8,8 @@ class CommentsController < ApplicationController
         # else
             if params[:brand_id] 
                 @brand = Brand.find_by_id(params[:brand_id])
-                @comments = @brand.comments 
+                @comment = @brand.comments.build
+                # binding.pry
             else 
                 @comment = Comment.new 
             # @comment.user = current_user 
@@ -16,8 +17,9 @@ class CommentsController < ApplicationController
     end  
 
     def create
-        @comment = Comment.new(comment_params) 
-        # @comment = @brand.comments.build(comment_params) 
+        @brand = Brand.find_by_id(params[:brand_id])
+        binding.pry 
+        @comment = Comment.new(comment_params)  
         # @comment.user = current_user 
          if @comment.save # returns the same true or false as .valid 
              redirect_to comment_path(@comment)
