@@ -5,4 +5,4 @@
     <p> <%= @brand.info %></p>
 </div>
 <%# <%= image_tag (@brand.image) %>
-
+<%= link_to "Create Review", new_brand_comment_path(@brand, @comments) %> 

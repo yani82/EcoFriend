@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
         #     @comment = @brand.comments.build 
         # else
             if params[:brand_id] 
-                @brand = Brand.find_by_id(params[:brand_id])
+                set_brand
                 @comment = @brand.comments.build
                 # binding.pry
             else 
@@ -17,12 +17,12 @@ class CommentsController < ApplicationController
     end  
 
     def create
-        @brand = Brand.find_by_id(params[:brand_id])
-        binding.pry 
-        @comment = Comment.new(comment_params)  
+        set_brand
+        # binding.pry 
+        @comment = @brand.comments.build(comment_params)  
         # @comment.user = current_user 
          if @comment.save # returns the same true or false as .valid 
-             redirect_to comment_path(@comment)
+             redirect_to brand_comment_path(@brand, @comment)
          else 
              render :new # new review not showing? 
          end 
@@ -33,14 +33,14 @@ class CommentsController < ApplicationController
     end 
 
     def index 
-        if @brand = Brand.find_by_id(params[:brand_id]) 
+        if set_brand
             @comments = @brand.comments 
         else 
             @comments = Comment.all
         end
     end 
 
-    private 
+    private # methods that you create/helpers 
 
     def comment_params 
         params.require(:comment).permit(:user_id, :brand_id, :review)
@@ -50,6 +50,10 @@ class CommentsController < ApplicationController
         @user = current_user
         # binding.pry 
     end
+
+    def set_brand 
+        @brand = Brand.find_by_id(params[:brand_id])
+    end 
     
 end 
 

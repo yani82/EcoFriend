@@ -26,6 +26,7 @@ class BrandsController < ApplicationController
 
     def show
         @brand = Brand.find_by_id(params[:id])
+        @comments = @brand.comments.build 
         # binding.pry 
     end 
 
