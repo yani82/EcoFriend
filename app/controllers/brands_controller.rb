@@ -30,6 +30,12 @@ class BrandsController < ApplicationController
         # binding.pry 
     end 
 
+    # def edit
+    # end 
+
+    # def delete 
+    # end 
+
     private 
 
     def brand_params

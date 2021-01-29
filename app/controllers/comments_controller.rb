@@ -40,6 +40,12 @@ class CommentsController < ApplicationController
         end
     end 
 
+    # def edit
+    # end 
+
+    # def delete 
+    # end 
+
     private # methods that you create/helpers 
 
     def comment_params 
