@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+# root 'brands#index', as: 'Home' 
+
   get '/' => 'sessions#welcome'
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'

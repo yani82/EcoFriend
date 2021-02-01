@@ -1,8 +1,19 @@
 <h1><%= @brand.name %></h1>
+<br>
 
-<h2><%= @brand.category %></h2>
-<div>
-    <p> <%= @brand.info %></p>
-</div>
+<p><%= @brand.category %></p>
+
+<p> <%= @brand.info %></p>
+<br> 
+
 <%# <%= image_tag (@brand.image) %>
-<%= link_to "Review Item", new_brand_comment_path(@brand, @comments) %> 
+
+<%= link_to "Edit", edit_brand_path(@brand), :class => 'btn btn-default' %>
+<%= link_to "Delete", brand_path(@brand), 
+                                    method: :delete, 
+                                    data: {confirm: 'Are you sure?'}, 
+                                    :class => 'btn btn-danger' %>
+<br> 
+<br> 
+
+<%= link_to "Add Review", new_brand_comment_path(@brand, @comments) %> 

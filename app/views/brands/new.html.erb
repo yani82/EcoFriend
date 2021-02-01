@@ -5,18 +5,18 @@
 <%= form_for(@brand) do |f| %>
     
             <%= f.label :name %>
-            <%= f.text_field :name %>
+            <%= f.text_field(:name, {:class => 'form-control'}) %>
             <br>
             <%= f.label :category %>
-            <%= f.text_field :category %>
+            <%= f.text_field(:category, {:class => 'form-control'}) %>
             <br>
             <%= f.label :info %>
-            <%= f.text_field :info %>
+            <%= f.text_field(:info, {:class => 'form-control'}) %>
         <br><br> 
         <%= f.label :image %>
         <%= f.file_field :image %>
         <br><br> 
        
-    <%= f.submit %>
+    <%= f.submit({:class => 'btn btn-primary'}) %>
 
 <% end %>

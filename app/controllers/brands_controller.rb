@@ -1,4 +1,5 @@
 class BrandsController < ApplicationController
+    # http_basic_authenticate_with name: "Yani", password: "12345", except: [:index, :show]
 
     def new 
         @brand = Brand.new
@@ -31,9 +32,23 @@ class BrandsController < ApplicationController
     end 
 
     # def edit
+        # @brand = Brand.find(params[:id])
+    # end 
+
+    # def update
+        # @brand = Brand.find(params[:id])
+        #     if(@brand.update(brand_params))
+        #         redirect_to @brand 
+        #     else 
+        #         render 'edit'
+        #     end 
     # end 
 
     # def delete 
+        # @brand = Brand.find(params[:id])
+        # @brand.delete 
+
+        # redirect_to brands_path 
     # end 
 
     private 

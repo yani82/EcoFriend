@@ -2,6 +2,8 @@ class CommentsController < ApplicationController
     # before_action :find_comment, only: [:new, :index]
     # before_action :find_user
 
+    # http_basic_authenticate_with name: "Yani", password: "12345", only: [:delete]
+
     def new
         # if @brand = Brand.find_by_id(params[:brand_id]) 
         #     @comment = @brand.comments.build 
@@ -9,7 +11,6 @@ class CommentsController < ApplicationController
             if params[:brand_id] 
                 set_brand
                 @comment = @brand.comments.build
-                # binding.pry
             else 
                 @comment = Comment.new 
             # @comment.user = current_user 
@@ -18,13 +19,12 @@ class CommentsController < ApplicationController
 
     def create
         set_brand
-        # binding.pry 
         @comment = @brand.comments.build(comment_params)  
         # @comment.user = current_user 
          if @comment.save # returns the same true or false as .valid 
              redirect_to brand_comment_path(@brand, @comment)
          else 
-             render :new # new review not showing? 
+             render :new  
          end 
      end 
 
@@ -41,9 +41,23 @@ class CommentsController < ApplicationController
     end 
 
     # def edit
+        # @comment = Comment.find(params[:id])
+    # end 
+
+    # def update
+        # @comment = Comment.find(params[:id])
+        #     if(@comment.update(comment_params))
+        #         redirect_to @comment 
+        #     else 
+        #         render 'edit'
+        #     end 
     # end 
 
     # def delete 
+        # @comment = Comment.find(params[:id])
+        # @comment.delete 
+
+        # redirect_to comments_path 
     # end 
 
     private # methods that you create/helpers 
@@ -54,7 +68,6 @@ class CommentsController < ApplicationController
 
     def find_user
         @user = current_user
-        # binding.pry 
     end
 
     def set_brand 
