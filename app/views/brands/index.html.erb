@@ -1,16 +1,23 @@
-<h1>Eco-friendly Brands</h1>
+<h1>Eco-friendly Brands:</h1>
+<br> 
 
 <% @brands.each do |b| %>
+<br>
+    <div> 
     <h2><%= b.name %> - <%= b.category %></h2>
     </div>
     <div>
-        <h3><%= b.info %></h3>
+    <%= b.image %>
+    </div>
+    <br><br> 
+    <div>
+        <p><%= b.info %></p>
     </div>
     <div>
-        <h4><% b.comments.each do |c| %></h4>
+        <p><% b.comments.each do |c| %></p>
         <%= c.review %>
         <% end %>
     </div>
-    
+    <br> 
     
 <% end %>

@@ -6,7 +6,8 @@
 <p> <%= @brand.info %></p>
 <br> 
 
-<%# <%= image_tag (@brand.image) %>
+<%= image_tag (@brand.image) %>
+<br><br> 
 
 <%= link_to "Edit", edit_brand_path(@brand), :class => 'btn btn-default' %>
 <%= link_to "Delete", brand_path(@brand), 
