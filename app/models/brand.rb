@@ -8,13 +8,10 @@ class Brand < ApplicationRecord
     validates :name, presence: true 
     # validate :not_a_duplicate 
 
-    
-
     # scope :order_by_rating, -> {joins(:brands).group(:id).order('avg(no attribute?) desc')} & change in controller/index 
 
     def self.search(params)
-        binding.pry 
-        
+        where("LOWER(name) = ?", params)
     end
 
     # def self.alpha

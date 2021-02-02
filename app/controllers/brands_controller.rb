@@ -11,8 +11,8 @@ class BrandsController < ApplicationController
 
     def index
         @brands = Brand.all 
-        if params[:q] 
-            @brands = @brands.search(params[:q])
+        if !params[:q].empty? 
+            @brands = @brands.search(params[:q].downcase)
         end 
     end 
 
