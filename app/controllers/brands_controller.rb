@@ -11,6 +11,9 @@ class BrandsController < ApplicationController
 
     def index
         @brands = Brand.all 
+        if params[:q] 
+            @brands = @brands.search(params[:q])
+        end 
     end 
 
     def create 
@@ -44,12 +47,12 @@ class BrandsController < ApplicationController
             end 
     end 
 
-    # def destroy 
-        # @brand = Brand.find(params[:id])
-        # @brand.destroy 
+    def destroy 
+        @brand = Brand.find(params[:id])
+        @brand.destroy 
 
-        # redirect_to brands_path 
-    # end 
+        redirect_to brands_path 
+    end 
 
     private 
 

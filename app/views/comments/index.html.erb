@@ -3,5 +3,12 @@
 <ol>
 <% @comments.each do |c| %>
     <li><%= c.brand.name %>: <%= c.review %></li>
+    <%= link_to "Edit", edit_comment_path(@comments), :class => 'btn btn-default' %>
+    <%= link_to "Delete", comment_path(@comments), 
+                                    method: :delete, 
+                                    data: {confirm: 'Are you sure?'}, 
+                                    :class => 'btn btn-danger' %>
+    <br>
+    <br> 
 <% end %>
 </ol>

@@ -1,7 +1,7 @@
 # Rails Eco Friend App
 
 <div align="center">
-  <img src="readme.jpg">
+  <img src="/readme.jpg">
 </div>
 
 <br>
