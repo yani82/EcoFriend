@@ -55,9 +55,9 @@ class CommentsController < ApplicationController
         #     end 
     # end 
 
-    # def delete 
+    # def destroy 
         # @comment = Comment.find(params[:id])
-        # @comment.delete 
+        # @comment.destroy 
 
         # redirect_to comments_path 
     # end 

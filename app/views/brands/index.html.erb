@@ -6,6 +6,12 @@
     <div> 
     <h2><%= link_to b.name, brand_path(b) %> - <%= b.category %></h2>
     </div>
+    <div> 
+    <% if !b.image.blank? %> 
+    <%= image_tag b.image %>
+    <% end %> 
+    </div>
+    <br><br> 
     <div>
         <p><%= b.info %></p>
     </div>
@@ -15,5 +21,11 @@
         <% end %>
     </div>
     <br> 
+
+    <%= link_to "Edit", edit_brand_path(b), :class => 'btn btn-default' %>
+    <%= link_to "Delete", brand_path(b), 
+                                    method: :delete, 
+                                    data: {confirm: 'Are you sure?'}, 
+                                    :class => 'btn btn-danger' %>
     
 <% end %>

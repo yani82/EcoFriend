@@ -5,8 +5,9 @@
 
 <p> <%= @brand.info %></p>
 <br> 
-
+<% if !@brand.image.blank? %> 
 <%= image_tag (@brand.image) %>
+<% end %>
 <br><br> 
 
 <%= link_to "Edit", edit_brand_path(@brand), :class => 'btn btn-default' %>

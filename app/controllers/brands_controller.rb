@@ -31,22 +31,22 @@ class BrandsController < ApplicationController
         # binding.pry 
     end 
 
-    # def edit
-        # @brand = Brand.find(params[:id])
-    # end 
+    def edit
+        @brand = Brand.find(params[:id])
+    end 
 
-    # def update
-        # @brand = Brand.find(params[:id])
-        #     if(@brand.update(brand_params))
-        #         redirect_to @brand 
-        #     else 
-        #         render 'edit'
-        #     end 
-    # end 
+    def update
+        @brand = Brand.find(params[:id])
+            if(@brand.update(brand_params))
+                redirect_to @brand 
+            else 
+                render 'edit'
+            end 
+    end 
 
-    # def delete 
+    # def destroy 
         # @brand = Brand.find(params[:id])
-        # @brand.delete 
+        # @brand.destroy 
 
         # redirect_to brands_path 
     # end 
