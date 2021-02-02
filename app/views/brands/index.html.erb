@@ -4,12 +4,8 @@
 <% @brands.each do |b| %>
 <br>
     <div> 
-    <h2><%= b.name %> - <%= b.category %></h2>
+    <h2><%= link_to b.name, brand_path(b) %> - <%= b.category %></h2>
     </div>
-    <div>
-    <%= b.image %>
-    </div>
-    <br><br> 
     <div>
         <p><%= b.info %></p>
     </div>

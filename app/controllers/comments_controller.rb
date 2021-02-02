@@ -20,7 +20,8 @@ class CommentsController < ApplicationController
     def create
         set_brand
         @comment = @brand.comments.build(comment_params)  
-        # @comment.user = current_user 
+        @comment.user = current_user 
+        # binding.pry
          if @comment.save # returns the same true or false as .valid 
              redirect_to brand_comment_path(@brand, @comment)
          else 
@@ -30,6 +31,7 @@ class CommentsController < ApplicationController
 
     def show
         @comment = Comment.find_by_id(params[:id])
+        set_brand 
     end 
 
     def index 
@@ -66,9 +68,10 @@ class CommentsController < ApplicationController
         params.require(:comment).permit(:user_id, :brand_id, :review)
     end 
 
-    def find_user
-        @user = current_user
-    end
+    # def find_user
+    #     @user = current_user
+    #     # binding.pry
+    # end
 
     def set_brand 
         @brand = Brand.find_by_id(params[:brand_id])
