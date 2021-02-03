@@ -68,11 +68,6 @@ class CommentsController < ApplicationController
         params.require(:comment).permit(:user_id, :brand_id, :review)
     end 
 
-    # def find_user
-    #     @user = current_user
-    #     # binding.pry
-    # end
-
     def set_brand 
         @brand = Brand.find_by_id(params[:brand_id])
     end 

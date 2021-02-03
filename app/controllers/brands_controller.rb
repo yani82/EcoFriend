@@ -5,14 +5,14 @@ class BrandsController < ApplicationController
         @brand = Brand.new
         @brand.comments.build
         @user = current_user 
-        #byebug
         # @brand.build_brand or @users.comments.build
-    end
+    end 
 
     def index
         @brands = Brand.all 
-        if !params[:q].empty? 
+        if params[:q].present? 
             @brands = @brands.search(params[:q].downcase)
+            # @brands = @brands.filter(params[:brand][:category_id]) if params[:brand] && params[:brand][:category_id] != ""
         end 
     end 
 
@@ -34,25 +34,25 @@ class BrandsController < ApplicationController
         # binding.pry 
     end 
 
-    def edit
-        @brand = Brand.find(params[:id])
-    end 
+    # def edit
+    #     @brand = Brand.find(params[:id])
+    # end 
 
-    def update
-        @brand = Brand.find(params[:id])
-            if(@brand.update(brand_params))
-                redirect_to @brand 
-            else 
-                render 'edit'
-            end 
-    end 
+    # def update
+    #     @brand = Brand.find(params[:id])
+    #         if(@brand.update(brand_params))
+    #             redirect_to @brand 
+    #         else 
+    #             render 'edit'
+    #         end 
+    # end 
 
-    def destroy 
-        @brand = Brand.find(params[:id])
-        @brand.destroy 
+    # def destroy 
+    #     @brand = Brand.find(params[:id])
+    #     @brand.destroy 
 
-        redirect_to brands_path 
-    end 
+    #     redirect_to brands_path 
+    # end 
 
     private 
 

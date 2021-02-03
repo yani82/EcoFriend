@@ -24,7 +24,6 @@ class SessionsController < ApplicationController
     end 
 
     def omniauth
-        # byebug
 
         @user = User.create_by_google_omniauth(auth)
 
